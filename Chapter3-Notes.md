@@ -1,4 +1,6 @@
-## Chapter3: Notes
+## Chapter3: Indices, Nodes and Recursion
+
+# Notes
 
 ### Insertion sort
 1. Insertion sort split array into two arrays, one sorted and the other one is unsorted. 
@@ -13,3 +15,12 @@ have different sequence each time as a seed. That's why we use system current ti
 ```java
 Random rand = new Random(System.currentTimeMillis());
 ```
+
+### Simple Cryptography with Chars array
+Another application of arrays is the representing of strings of characters.
+
+#### Caesar Cipher
+Encrypt and decrypt plaintext by replace each letter with another fixed-offset letter. e.g replace A with D, B with E etc.. 
+
+1. Modulus is the concept of REMINDER. In other words, we can define a range using modulus. In our case we only have 26 alphabet so 65('A') mod 65 = 0 which is first letter in our list. 90('Z) mod 65 = 25 which is last letter in our list. 
+2. 
