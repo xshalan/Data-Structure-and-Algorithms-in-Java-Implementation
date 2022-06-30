@@ -1,3 +1,3 @@
 # Ignore inteljiIdea folders
-.idea
-out
+/.idea
+/out
