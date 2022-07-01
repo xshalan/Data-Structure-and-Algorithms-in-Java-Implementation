@@ -35,6 +35,7 @@ System.out.println(Arrays.equals(A,B)); // false;
 That is because int[][] is an `instanceof` `Object[]` not `int[]` . This simple equality rule says that two base type variables are equal if they have the same value and refer to the same object. 
 3. `deepEquals(A,B)` => used to test if two arrays are deeply equal.
 4. In general, Arrays are **not very adaptable** (fixed size)
+5.  Arrays are also **expensive** to maintain **new insertions and deletions**.
 ### Singly Linked Lists
 1. A Sequence of elements(Nodes) connecting together in linear order. 
 2. The next reference inside a node is a pointer to the next node. Knowing as `link/pointer hopping`
@@ -66,3 +67,13 @@ head <= head.getNext()
 temp.setNext(null)
 size <= size -1
 ```
+
+### Doubly LinkedList
+To keep tracking the previous and the next node of every node.
+1. Start with head ==next==> tail. 
+2. Application of doubly linkedlist. e.g Redo&Undo - Browser Pages. 
+3. Head previous == Tail next == NULL 
+4. it does **not allow direct access** to the nodes. 
+5. LinkedList uses more memory comparing to ,e.g, Arrays. 
+6. `circular linked list` where last node of the list points back to the first node (or the head) of the list.
+
