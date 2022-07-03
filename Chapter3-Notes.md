@@ -77,3 +77,13 @@ To keep tracking the previous and the next node of every node.
 5. LinkedList uses more memory comparing to ,e.g, Arrays. 
 6. `circular linked list` where last node of the list points back to the first node (or the head) of the list.
 
+---
+### Recursion
+A method that call itself. "Recursive Call."
+By reducing the problem to smaller subproblems.
+1. Useful for problems that have repeated structural form. e.g 'File System'
+2. MUST have a `base case` --> Fixed condition.
+3. One of Flaws, infinite loop
+4. Recursion emphasizes thinking about a problem at `a high level of abstraction`
+
+#### Linear Recursion
