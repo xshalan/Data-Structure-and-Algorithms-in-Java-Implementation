@@ -79,7 +79,7 @@ To keep tracking the previous and the next node of every node.
 
 ---
 ### Recursion
-A method that call itself. "Recursive Call."
+A method that call itself. "Recursive Call." Divide the problem into sub-problems with the same general structure as the original problem.
 By reducing the problem to smaller subproblems.
 1. Useful for problems that have repeated structural form. e.g 'File System'
 2. MUST have a `base case` --> Fixed condition.
@@ -87,3 +87,14 @@ By reducing the problem to smaller subproblems.
 4. Recursion emphasizes thinking about a problem at `a high level of abstraction`
 
 #### Linear Recursion
+Simplest form of recursion. 
+1. Make one recursive call each time it is invoked
+2. Useful for problem in terms of first or last element plus a set of the remaining.
+3. E.g ( Sum of array // Reverse of array // Factorial ).
+
+#### Tail Recursion
+1. Optimizes the recursion call by making the recursive call as its very last operation.
+2. Most cases start with initial values. 
+
+#### Binary Recursion
+When an algorithm makes `two recursive calls`
