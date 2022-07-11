@@ -1,7 +1,11 @@
-/*
+package interfaces;/*
 @Author: mohammed.shalan 
 @Date: 08-Jul-22
 */
+
+import exception.EmptyStackException;
+import exception.FullStackException;
+
 /**
  * Abstract data type(interface) to define the common methods
  * */

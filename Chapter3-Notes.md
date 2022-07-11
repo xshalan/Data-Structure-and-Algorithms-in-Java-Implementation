@@ -40,7 +40,7 @@ That is because int[][] is an `instanceof` `Object[]` not `int[]` . This simple 
 1. A Sequence of elements(Nodes) connecting together in linear order. 
 2. The next reference inside a node is a pointer to the next node. Knowing as `link/pointer hopping`
 3. We can't remove node at the tail position because we don't have reference to the previous one.
-4. {head}-> **| Node A |** ---> **| Node B |** ---> **| Node C |** <- {tail}
+4. {head}-> **| stack.Node A |** ---> **| stack.Node B |** ---> **| stack.Node C |** <- {tail}
 
 #### insert element at first 
 ```

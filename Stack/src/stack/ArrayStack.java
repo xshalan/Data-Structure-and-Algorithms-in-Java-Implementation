@@ -1,21 +1,25 @@
-/*
+package stack;/*
 @Author: mohammed.shalan 
 @Date: 08-Jul-22
 */
 
+import exception.EmptyStackException;
+import exception.FullStackException;
+import interfaces.Stack;
+
 import java.util.Arrays;
 
 public class ArrayStack<T> implements Stack<T> {
-    protected int capacity ;
+    protected int capacity;
     protected static final int CAPACITY = 100; // NOTE: Should be static to use constructor chain
     private T[] S;
-    private int top = -1; // Stack is Empty
+    private int top = -1; // Interface.Stack is Empty
 
-    ArrayStack() {
+    public ArrayStack() {
         this(CAPACITY);
     }
 
-    ArrayStack(int capacity) {
+    public ArrayStack(int capacity) {
         this.capacity = capacity;
         S = (T[]) new Object[capacity];
     }
@@ -31,29 +35,29 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public T pop() throws EmptyStackException {
-        if(isEmpty())
+        if (isEmpty())
             throw new EmptyStackException("The stack is empty.");
-        T temp = S[top+1];
-        S[top+1] = null;
+        T temp = S[top];
+        S[top] = null;
         --top;
         return temp;
     }
 
     @Override
     public T top() throws EmptyStackException {
-        if(isEmpty())
+        if (isEmpty())
             throw new EmptyStackException("The stack is empty.");
         return S[top];
     }
 
     @Override
     public int size() {
-        return top+1;
+        return top + 1;
     }
 
     @Override
     public boolean isEmpty() {
-        return top<0;
+        return top < 0;
     }
 
     @Override

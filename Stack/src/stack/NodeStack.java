@@ -1,9 +1,12 @@
-/*
+package stack;/*
 @Author: mohammed.shalan 
 @Date: 08-Jul-22
 */
 
-public class NodeStack<T> implements Stack<T>{
+import exception.EmptyStackException;
+import interfaces.Stack;
+
+public class NodeStack<T> implements Stack<T> {
     protected Node<T> head;
     protected int size;
 
@@ -21,7 +24,7 @@ public class NodeStack<T> implements Stack<T>{
     @Override
     public T pop() throws EmptyStackException {
         if(isEmpty())
-            throw new EmptyStackException("Stack is empty.");
+            throw new EmptyStackException("Interface.Stack is empty.");
 
         Node<T> temp = head;
         size--;
@@ -33,7 +36,7 @@ public class NodeStack<T> implements Stack<T>{
     @Override
     public T top() throws EmptyStackException {
         if(isEmpty())
-            throw new EmptyStackException("Stack is empty.");
+            throw new EmptyStackException("Interface.Stack is empty.");
         return head.getElement();
     }
 
