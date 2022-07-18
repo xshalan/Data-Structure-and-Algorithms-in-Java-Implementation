@@ -18,3 +18,8 @@
 is the 'cousin' of Stack.  `first element is the FRONT`
 1. insert and remove according to **first-in-first-out FIFO** 
 2. Queue ADT: enqueue-> to insert & dequeue-> to remove. 
+3- All Operations have O(1)
+#### Double-Ended Queues:
+   DS support insertion and deletion at both front and the rear of the queue. _'Pronounced "deck"'_
+   
+All Operations have O(1)

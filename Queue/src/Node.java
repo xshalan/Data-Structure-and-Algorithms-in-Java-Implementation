@@ -6,10 +6,12 @@
 public class Node<T> {
     private T element;
     private Node<T> next;
+    private Node<T> prev;
 
     public Node(T element) {
         this.element = element;
         next = null;
+        prev = null;
     }
 
     public Node(T element, Node<T> next) {
@@ -31,5 +33,13 @@ public class Node<T> {
 
     public void setNext(Node<T> next) {
         this.next = next;
+    }
+
+    public Node<T> getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node<T> prev) {
+        this.prev = prev;
     }
 }
