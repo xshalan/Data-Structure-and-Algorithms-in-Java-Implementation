@@ -1,4 +1,4 @@
-## Chapter4: Stacks, Queues and Deques
+## Chapter5: Stacks, Queues and Deques
 
 # Notes
 
