@@ -37,3 +37,9 @@ we can implement list using 'singly or doubly' nodes. In this version of list, w
 
 #### Using Iterator: 
 "Design Pattern" which abstracts the process of scanning through a collection of elements `one element at a time`.
+|ArrayList|LinkedList|
+|--|--|
+|is index-based list that use `extendable array` to store elements.| is node-based list that use `node` to store elements |
+| insert or delete elements require `shifting` which cost _O(N)_ time. _`O(1) amortized`_ | insert or delete elements is much faster which cost _O(1)_
+| access elements is faster _O(1)_ because its index-based | access elements is slower because we access the elements sequentially.|
+| required less memory| require more memory because we track the `next element` and the `previous element` inside each node. |
