@@ -32,14 +32,14 @@ public class NodeBasedList<E> implements PositionList<E> {
     }
 
     @Override
-    public Position<E> getFirst() {
+    public DNode<E> getFirst() {
         if(isEmpty())
             throw new EmptyListException("The list is empty.");
         return head.getNext();
     }
 
     @Override
-    public Position<E> getLast() {
+    public DNode<E> getLast() {
         if(isEmpty())
             throw new EmptyListException("The list is empty.");
         return tail.getPrev();
@@ -66,8 +66,9 @@ public class NodeBasedList<E> implements PositionList<E> {
         DNode<E> node = new DNode<>(e);
         node.setPrev(head);
         node.setNext(head.getNext());
-        head.setNext(node);
         head.getNext().setPrev(node);
+        head.setNext(node);
+
         size++;
         return node;
     }
@@ -77,32 +78,35 @@ public class NodeBasedList<E> implements PositionList<E> {
         DNode<E> node = new DNode<>(e);
         node.setNext(tail);
         node.setPrev(tail.getPrev());
+        tail.getPrev().setPrev(node);
         tail.setPrev(node);
-        tail.getPrev().setNext(node);
+
         size++;
         return node;
     }
 
     @Override
-    public Position<E> addBefore(Position<E> p, E e) throws IllegalArgumentException {
+    public DNode<E> addBefore(Position<E> p, E e) throws IllegalArgumentException {
         DNode<E> position = checkPosition(p);
         DNode<E> node = new DNode<>(e);
         node.setNext(position);
         node.setPrev(position.getPrev());
-        position.setPrev(node);
         position.getPrev().setNext(node);
+        position.setPrev(node);
+
         size++;
         return node;
     }
 
     @Override
-    public Position<E> addAfter(Position<E> p, E e) throws IllegalArgumentException {
+    public DNode<E> addAfter(Position<E> p, E e) throws IllegalArgumentException {
         DNode<E> position = checkPosition(p);
         DNode<E> node = new DNode<>(e);
         node.setPrev(position);
         node.setNext(position.getNext());
-        position.setNext(node);
         position.getNext().setPrev(node);
+        position.setNext(node);
+
         size++;
         return node;
     }
@@ -110,7 +114,6 @@ public class NodeBasedList<E> implements PositionList<E> {
     @Override
     public E set(Position<E> p, E e) throws IllegalArgumentException {
         DNode<E> position = checkPosition(p);
-        DNode<E> node = new DNode<>(e);
         E temp = position.element();
         position.setElement(e);
         return temp;
@@ -119,12 +122,15 @@ public class NodeBasedList<E> implements PositionList<E> {
     @Override
     public E remove(Position<E> p) throws IllegalArgumentException {
         DNode<E> position = checkPosition(p);
-        position.getNext().setPrev(position.getPrev());
-        position.getPrev().setNext(position.getNext());
+        DNode<E> next = position.getNext();
+        DNode<E> prev = position.getPrev();
+        next.setPrev(prev);
+        prev.setNext(next);
         E temp  = position.element();
         position.setElement(null);
         position.setPrev(null);
         position.setNext(null);
+        size--;
         return temp;
     }
 

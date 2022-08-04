@@ -50,4 +50,13 @@ public class DNode<E> implements Position<E> {
     public void setNext(DNode<E> next) {
         this.next = next;
     }
+
+    @Override
+    public String toString() {
+        return "DNode{" +
+                "prev=" + prev.element +
+                ", next=" + next.element +
+                ", element=" + element +
+                '}';
+    }
 }

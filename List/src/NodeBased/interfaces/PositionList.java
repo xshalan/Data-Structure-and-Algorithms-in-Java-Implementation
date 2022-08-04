@@ -5,6 +5,8 @@ package NodeBased.interfaces;
 @Date: 31-Jul-22
 */
 
+import NodeBased.DNode;
+
 public interface PositionList<E>  {
 
     /**
@@ -24,14 +26,14 @@ public interface PositionList<E>  {
      *
      * @return the first Position in the list (or null, if empty)
      */
-    Position<E> getFirst();
+    DNode<E> getFirst();
 
     /**
      * Returns the last Position in the list.
      *
      * @return the last Position in the list (or null, if empty)
      */
-    Position<E> getLast();
+    DNode<E> getLast();
 
     /**
      * Returns the Position immediately before Position p.
@@ -73,7 +75,7 @@ public interface PositionList<E>  {
      * @return the Position representing the location of the new element
      * @throws IllegalArgumentException if p is not a valid position for this list
      */
-    Position<E> addBefore(Position<E> p, E e)
+    DNode<E> addBefore(Position<E> p, E e)
             throws IllegalArgumentException;
 
     /**
@@ -84,7 +86,7 @@ public interface PositionList<E>  {
      * @return the Position representing the location of the new element
      * @throws IllegalArgumentException if p is not a valid position for this list
      */
-    Position<E> addAfter(Position<E> p, E e)
+    DNode<E> addAfter(Position<E> p, E e)
             throws IllegalArgumentException;
 
     /**
