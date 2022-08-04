@@ -9,6 +9,9 @@ import NodeBased.exceptions.InvalidPositionException;
 import NodeBased.interfaces.Position;
 import NodeBased.interfaces.PositionList;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class NodeBasedList<E> implements PositionList<E> {
     private DNode head,tail;
     private int size;
@@ -134,6 +137,11 @@ public class NodeBasedList<E> implements PositionList<E> {
         return temp;
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new ElementIterator<>(this);
+    }
+
     private DNode<E> checkPosition(Position<E> position){
         // [head] --> POSITION <-- [tail]
         if (position==null)
@@ -150,5 +158,30 @@ public class NodeBasedList<E> implements PositionList<E> {
         }catch (ClassCastException exception){
             throw new InvalidPositionException("Position is a wrong type for the list.");
         }
+    }
+
+    private class ElementIterator<E> implements Iterator<E>{
+        PositionList<E> list; // the list itself
+        Position<E> cursor; // represents the NODE
+
+        public ElementIterator(PositionList<E> list) {
+            this.list = list;
+            cursor = (!list.isEmpty())? list.getFirst() : null;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return cursor!=null;
+        }
+
+        @Override
+        public E next() {
+            if(cursor==null)
+                throw new NoSuchElementException("There is no next element");
+            E temp = cursor.element();
+            cursor = (cursor==getLast()) ? null : list.after(cursor);
+            return temp ;
+        }
+
     }
 }

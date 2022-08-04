@@ -33,3 +33,7 @@ we can implement list using 'singly or doubly' nodes. In this version of list, w
 1. `Position` is an abstract data type that will be always after some position 'q' and before some position 's'.
 2. the `Position` does not change even if we replace or swap the element stored at that position. 
 3. Positions allow us to define a position-based list that take position object as parameter. 
+4. All insert, remove or update operations take _O_(1) time.
+
+#### Using Iterator: 
+"Design Pattern" which abstracts the process of scanning through a collection of elements `one element at a time`.

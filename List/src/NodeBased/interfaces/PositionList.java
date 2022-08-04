@@ -7,7 +7,9 @@ package NodeBased.interfaces;
 
 import NodeBased.DNode;
 
-public interface PositionList<E>  {
+import java.util.Iterator;
+
+public interface PositionList<E> extends Iterable<E>  {
 
     /**
      * Returns the number of elements in the list.
@@ -108,6 +110,8 @@ public interface PositionList<E>  {
      * @throws IllegalArgumentException if p is not a valid position for this list
      */
     E remove(Position<E> p) throws IllegalArgumentException;
-    
-    
+
+
+    @Override
+    Iterator<E> iterator();
 }
