@@ -81,7 +81,7 @@ public class NodeBasedList<E> implements PositionList<E> {
         DNode<E> node = new DNode<>(e);
         node.setNext(tail);
         node.setPrev(tail.getPrev());
-        tail.getPrev().setPrev(node);
+        tail.getPrev().setNext(node);
         tail.setPrev(node);
 
         size++;

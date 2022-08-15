@@ -61,3 +61,4 @@ height(T,v):
 is an ordered tree with the following:
 1. Every node have at most two children. 
 2. Each child node maybe a left-child or right-child.
+3. 
