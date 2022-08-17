@@ -81,11 +81,11 @@ public class LinkedBinaryTreeTest {
     @Test
     public void createTreeWithNodesToTestIterable() {
         /**
-         *                   Africa
-         *                     |
-         *          |Libya|            |Egypt|
-         *           L|R                 L|R
-         * |Tarablus | NULL         NULL  |  |Cairo|
+         *                Africa
+         *               /      \
+         *          Libya       Egypt
+         *          /   \        /  \
+         *    Tarablus  NULL  NULL  Cairo
          */
         BTNode<String> root = (BTNode<String>) cities.addRoot("Africa");
         BTNode<String> egypt = (BTNode<String>) cities.insertRight(cities.root(),"Egypt");
@@ -144,5 +144,65 @@ public class LinkedBinaryTreeTest {
     public void isEmptyWhenSizeZero() {
         assertEquals(0,cities.size());
         assertTrue(cities.isEmpty());
+    }
+
+    @Test
+    public void removeNodeWithOneChildFromTree_ReturnTheRemovedNode(){
+        /**
+         *        d
+         *      /   \
+         *     b     f
+         *    / \   / \
+         *   a   c e
+         * remove f node
+         * */
+        LinkedBinaryTree<String> tree  = new LinkedBinaryTree<>();
+        Position<String> root = tree.addRoot("d");
+        Position<String> b = tree.insertLeft(root,"b");
+        Position<String> f = tree.insertRight(root,"f");
+        Position<String> a = tree.insertLeft(b,"a");
+        Position<String> c = tree.insertRight(b,"c");
+        Position<String> e = tree.insertLeft(f,"e");
+        String removed_f = tree.remove(f);
+        assertEquals("f",removed_f);
+        String expected = "d,b,a,c,e,";
+        tree.preorderPositions(root,treeList);
+        assertEquals(expected,printTree());
+    }
+
+    @Test(expected = InvalidPositionException.class)
+    public void removeNodeWithTwoChildrenFromTree_RaiseException(){
+        /**
+         *        d
+         *      /   \
+         *     b     f
+         *    / \   / \
+         *   a   c e
+         * remove f node
+         * */
+        LinkedBinaryTree<String> tree  = new LinkedBinaryTree<>();
+        Position<String> root = tree.addRoot("d");
+        Position<String> b = tree.insertLeft(root,"b");
+        Position<String> f = tree.insertRight(root,"f");
+        Position<String> a = tree.insertLeft(b,"a");
+        Position<String> c = tree.insertRight(b,"c");
+        Position<String> e = tree.insertLeft(f,"e");
+        tree.remove(root);
+    }
+
+
+    @Test
+    public void checkIfTheNodeIsLead_External(){
+        /**
+         *        d
+         *      /   \
+         *     b     f
+         * */
+        LinkedBinaryTree<String> tree  = new LinkedBinaryTree<>();
+        Position<String> root = tree.addRoot("d");
+        Position<String> b = tree.insertLeft(root,"b");
+        Position<String> f = tree.insertRight(root,"f");
+        assertTrue(tree.isExternal(b));
+        assertTrue(tree.isExternal(f));
     }
 }
