@@ -45,14 +45,14 @@ height(T,v):
 
 ### Traversal Algorithms: 
 #### PreOrder Traversal: systematic way to access or "visit" all nodes of tree T.
-1. Root is visited FIRST. 
-2. Then the subtrees rooted.
-3. Then the children of subtrees.
+1. **Root** is visited **FIRST**. 
+2. Then the **subtrees** rooted.
+3. Then the **children** of subtrees.
 
 #### PostOrder Traversal: opposite of preorder. **The name comes from** the fact that this traversal method will **visit a node v after** it has visited all other nodes in the subtree rooted at v.
-1. Recursively, the children of subtrees FIRST.
-2. Then the subtrees rooted.
-3. Then the root.
+1. Recursively, the **children** of subtrees **FIRST**.
+2. Then the **subtrees** rooted.
+3. Then the **root**.
 4. Run in LINEAR time. O(n) where n is the number of visited nodes.
 ![Tree height vs tree depth](/assets/Height_vs_Depth.png)
 

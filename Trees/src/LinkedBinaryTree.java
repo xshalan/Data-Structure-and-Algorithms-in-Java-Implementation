@@ -3,6 +3,7 @@
 @Date: 11-Aug-22
 */
 
+import NodeBased.NodeBasedList;
 import NodeBased.interfaces.PositionList;
 import exceptions.EmptyTreeException;
 import exceptions.InvalidPositionException;
@@ -97,24 +98,25 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     // TODO Implement iterator
     @Override
     public Iterator<E> iterator() {
-        Iterator<E> iterator = new Iterator<E>() {
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public E next() {
-                return null;
-            }
-        };
-        return iterator;
+        /**
+         *  Iterate through node using preOrder traversal.
+         *  Instead of trying to implement the iterator itself, I'll return the result of preOrder function below which is list using pre-order traversal.
+         */
+        PositionList<E> allPositions = new NodeBasedList<>();
+        for (Position<E> position:positions()){
+            allPositions.addLast(position.element());
+        }
+        return allPositions.iterator();
     }
 
-    // TODO implement positions iterable
+
     @Override
     public Iterable<Position<E>> positions() {
-        return null;
+        PositionList<Position<E>> list = new NodeBasedList<>();
+        if(root==null)
+            throw new EmptyTreeException("The tree is empty!");
+        preorderPositions(root,list);
+        return list;
     }
 
     // TODO implement replace
@@ -174,11 +176,12 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
         list.addLast(root);
         if(hasLeft(root)){
-         preorderPositions(root,list);
+         preorderPositions(left(root),list);
         }
         if(hasRight(root)){
-            preorderPositions(root,list);
+            preorderPositions(right(root),list);
         }
+
     }
 
     protected BTNode<E> createNode(E element,Position<E> parent,Position<E> left,Position<E> right){
