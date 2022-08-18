@@ -205,4 +205,33 @@ public class LinkedBinaryTreeTest {
         assertTrue(tree.isExternal(b));
         assertTrue(tree.isExternal(f));
     }
+
+    @Test
+    public void iterateThroughTree_UsingBreadthFirstAlgorithm(){
+        /**
+         *        1
+         *      /   \
+         *     2     3
+         *    / \   / \
+         *   4   5 6   7
+         *
+         * Iterate Using preOrder traversal
+         */
+        LinkedBinaryTree<String> tree  = new LinkedBinaryTree<>();
+        Position<String> root = tree.addRoot("1");
+        Position<String> b = tree.insertLeft(root,"2");
+        Position<String> f = tree.insertRight(root,"3");
+        Position<String> a = tree.insertLeft(b,"4");
+        Position<String> c = tree.insertRight(b,"5");
+        Position<String> e = tree.insertLeft(f,"6");
+        Position<String> g = tree.insertRight(f,"7");
+        Iterable<Position<String>> positions = tree.breadthFirst();
+        String result = "";
+        String expected = "1,2,3,4,5,6,7,";
+        for(Position<String> node:positions){
+            result += node.element() + ",";
+
+        }
+        assertEquals(expected,result);
+    }
 }

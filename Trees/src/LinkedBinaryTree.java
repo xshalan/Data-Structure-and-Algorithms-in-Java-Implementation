@@ -11,7 +11,7 @@ import exceptions.NonEmptyTreeException;
 import interfaces.BinaryTree;
 import interfaces.Position;
 
-import java.util.Iterator;
+import java.util.*;
 
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
     int size;
@@ -203,9 +203,9 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     public Iterable<Position<E>> children(Position<E> position) throws InvalidPositionException {
         PositionList<Position<E>> list = new NodeBasedList<>();
         if (hasLeft(position))
-            list.addLast(position);
+            list.addLast(left(position));
         if (hasRight(position))
-            list.addLast(position);
+            list.addLast(right(position));
 
         return list;
     }
@@ -250,5 +250,25 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return new BTNode<E>(parent, left, right, element);
     }
 
+
+
+    public Iterable<Position<E>> breadthFirst(){
+        PositionList<Position<E>> list = new NodeBasedList<>();
+
+        if(!isEmpty()){
+            Queue<Position<E>> queue = new LinkedList<>();
+            queue.add(root());
+            while (!queue.isEmpty()){
+                BTNode<E> p = (BTNode<E>) queue.remove();
+                list.addLast(p);
+                for(Position<E> position : children(p)){
+                    queue.add(position);
+                }
+
+            }
+        }
+
+        return list;
+    }
 
 }

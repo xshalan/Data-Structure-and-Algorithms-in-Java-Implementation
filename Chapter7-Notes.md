@@ -50,7 +50,7 @@ height(T,v):
 3. Then the **children** of subtrees.
 
 #### PostOrder Traversal: opposite of preorder. **The name comes from** the fact that this traversal method will **visit a node v after** it has visited all other nodes in the subtree rooted at v.
-1. Recursively, the **children** of subtrees **FIRST**.
+1. **Recursively**, the **children** of subtrees **FIRST**.
 2. Then the **subtrees** rooted.
 3. Then the **root**.
 4. Run in LINEAR time. O(n) where n is the number of visited nodes.
@@ -60,5 +60,21 @@ height(T,v):
 ### Binary Tree: 
 is an ordered tree with the following:
 1. Every node have at most two children. 
-2. Each child node maybe a left-child or right-child.
-3. 
+2. Each child node maybe a left-child or right-child. 
+#### Implement binary-tree using linked list. 
+![Implementation of binary tree using linked-list](/assets/binary_tree_linkedlist.png)
+
+#### Running-Time Analysis
+![binary-tree time analysis](/assets/binary-tree-time-analysis.png)
+
+### Breadth-First Tree Traversal
+1. In the breadth-first, we visit all the positions at depth d before we visit the positions at depth d+1.
+2.  The process is **not recursive**, since we are not traversing entire subtrees at once.
+3. Initialize queue Q to contain root() 
+4. while Q not empty do: 
+      p = Q.dequeue()
+      perform the visit action for position p 
+      for each child in p.children():
+            Q.enqueue(child)
+
+
