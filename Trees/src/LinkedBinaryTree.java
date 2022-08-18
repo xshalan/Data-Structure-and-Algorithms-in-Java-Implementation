@@ -86,6 +86,18 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     }
 
     /**
+     * Compute the depth of the tree at specific position.
+     * @param position to compute the depth at.
+     * @return number refers to the depth of the tree at that position.
+     */
+    @Override
+    public int depth(Position<E> position) {
+        if(position==root)
+            return 0;
+        return 1+ depth(parent(position));
+    }
+
+    /**
      * Remove node with zero on one child. replace the node with its child if exists.
      *
      * @param node to be removed

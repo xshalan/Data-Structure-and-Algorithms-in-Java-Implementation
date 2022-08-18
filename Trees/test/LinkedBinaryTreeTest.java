@@ -234,4 +234,33 @@ public class LinkedBinaryTreeTest {
         }
         assertEquals(expected,result);
     }
+
+    @Test
+    public void checkTheDepthOfTreeAtSpecificPosition_ReturnDepth(){
+        /**
+         *        1   d=0
+         *      /   \
+         *     2     3  d=1
+         *    / \   / \
+         *   4   5 6   7  d=2
+         *
+         */
+        LinkedBinaryTree<String> tree  = new LinkedBinaryTree<>();
+        Position<String> root = tree.addRoot("1");
+        Position<String> b = tree.insertLeft(root,"2");
+        Position<String> f = tree.insertRight(root,"3");
+        Position<String> a = tree.insertLeft(b,"4");
+        Position<String> c = tree.insertRight(b,"5");
+        Position<String> e = tree.insertLeft(f,"6");
+        Position<String> g = tree.insertRight(f,"7");
+        int expected_depth_0 = 0;
+        int expected_depth_1 = 1;
+        int expected_depth_2 = 2;
+        assertEquals(expected_depth_0,tree.depth(root));
+        assertEquals(expected_depth_1,tree.depth(f));
+        assertEquals(expected_depth_2,tree.depth(g));
+        assertEquals(expected_depth_2,tree.depth(e));
+    }
+
+
 }

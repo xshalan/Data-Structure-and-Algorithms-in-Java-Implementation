@@ -36,4 +36,6 @@ public interface BinaryTree<E> extends Tree<E>{
      * @throws InvalidPositionException
      */
     boolean hasLeft(Position<E> position) throws InvalidPositionException;
+
+    int depth(Position<E> position);
 }
