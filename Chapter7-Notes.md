@@ -77,4 +77,15 @@ is an ordered tree with the following:
       for each child in p.children():
             Q.enqueue(child)
 
-
+### Applications of Tree Traversals
+1. #### Table of Contents ( hierarchical structure of a document). 
+   We need to visit the root first, which is the main chapter in our case, so a **preorder traversal** of the tree can be used to produce a table of content for the document.
+2. #### Computing Disk Space
+   We need to compute the space of all files inside specific directory, So we used **postorder traversal** algorithm. _Unfortunately_, The formal postorder traversal dose not suffice for compute disk space because the parent have to know about all space of its children(files). 
+    ```
+   diskSpace(Tree T,Position P):
+        subtotal = p.space() // assuming _space()_ return the space of position.
+        for each child in T.children(p):
+            subtotal += child.space()
+   return subtotal
+   ```
