@@ -1,5 +1,6 @@
 package NodeBased;
 
+import NodeBased.interfaces.Position;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,9 +27,9 @@ public class NodeBasedListIteratorTest {
         linkedList.addFirst("Hello");
         linkedList.addFirst("Lorem");
         linkedList.addFirst("World");
-        Iterator<String> listIterator = linkedList.iterator();
+        Iterator<Position<String>> listIterator = linkedList.iterator();
         while (listIterator.hasNext()){
-            System.out.println(listIterator.next());
+            System.out.println(listIterator.next().element());
         }
     }
 }

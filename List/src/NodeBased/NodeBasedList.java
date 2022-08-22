@@ -52,7 +52,8 @@ public class NodeBasedList<E> implements PositionList<E> {
     public Position<E> before(Position<E> p) throws IllegalArgumentException {
         DNode<E> node = checkPosition(p);
         if(node.getPrev()==head)
-            throw new InvalidPositionException("Cannot advance past the beginning of the list.");
+            return null;
+//            throw new InvalidPositionException("Cannot advance past the beginning of the list.");
         return node.getPrev();
     }
 
@@ -138,7 +139,7 @@ public class NodeBasedList<E> implements PositionList<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public Iterator<Position<E>> iterator() {
         return new ElementIterator<>(this);
     }
 
@@ -160,7 +161,7 @@ public class NodeBasedList<E> implements PositionList<E> {
         }
     }
 
-    private class ElementIterator<E> implements Iterator<E>{
+    private class ElementIterator<E> implements Iterator<Position<E>>{
         PositionList<E> list; // the list itself
         Position<E> cursor; // represents the NODE
 
@@ -175,10 +176,10 @@ public class NodeBasedList<E> implements PositionList<E> {
         }
 
         @Override
-        public E next() {
+        public Position<E> next() {
             if(cursor==null)
                 throw new NoSuchElementException("There is no next element");
-            E temp = cursor.element();
+            Position<E> temp = cursor;
             cursor = (cursor==getLast()) ? null : list.after(cursor);
             return temp ;
         }

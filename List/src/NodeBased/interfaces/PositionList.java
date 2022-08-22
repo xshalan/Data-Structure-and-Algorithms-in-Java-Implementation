@@ -9,7 +9,7 @@ import NodeBased.DNode;
 
 import java.util.Iterator;
 
-public interface PositionList<E> extends Iterable<E>  {
+public interface PositionList<E> extends Iterable<Position<E>>  {
 
     /**
      * Returns the number of elements in the list.
@@ -113,5 +113,5 @@ public interface PositionList<E> extends Iterable<E>  {
 
 
     @Override
-    Iterator<E> iterator();
+    Iterator<Position<E>> iterator();
 }
