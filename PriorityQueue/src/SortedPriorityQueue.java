@@ -9,18 +9,17 @@ import NodeBased.interfaces.PositionList;
 import interfaces.Entry;
 
 public class SortedPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
-    private int size;
     private PositionList<Entry<K,V>> list ;
 
     public SortedPriorityQueue() {
         super();
-        size = 0;
+
         list = new NodeBasedList<>();
     }
 
     @Override
     public int size() {
-        return size;
+        return list.size();
     }
 
     @Override
@@ -49,6 +48,10 @@ public class SortedPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
             return list.getFirst().element();
         else
             return null;
+    }
+
+    public PositionList<Entry<K, V>> getList() {
+        return list;
     }
 
     @Override

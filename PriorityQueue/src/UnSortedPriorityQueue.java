@@ -21,6 +21,11 @@ public class UnSortedPriorityQueue<K,V> extends AbstractPriorityQueue<K,V>{
 
     }
 
+    public PositionList<Entry<K, V>> getList() {
+        return list;
+    }
+
+
     // ISSUE: I want to return Position<E> to pass it to list.remove(Position) but the iterator itself return the value Entry.
     // TODO: [x] Edit nodelist implementation to return position wrapper instead of the E itself.
     private Position<Entry<K,V>> findMin(){
@@ -30,7 +35,7 @@ public class UnSortedPriorityQueue<K,V> extends AbstractPriorityQueue<K,V>{
             for (Iterator<Position<Entry<K, V>>> it = list.iterator(); it.hasNext(); ) {
                 Position<Entry<K, V>> position = it.next();
                 if(compare(first.element(),position.element())<0){
-                    first = it.next();
+                    first = position;
                 }
 
             }
